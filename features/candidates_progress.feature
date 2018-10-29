@@ -1,0 +1,28 @@
+Feature: Candidate's Progress
+
+@tc00003 @tc00004
+Scenario: Create and Apply New Test - Simple
+  Given that I access the job edition page
+  When I edit the current job
+  And create a new test called 'New Test - Simple'
+  Then I must apply 'New Test - Simple' for subscribed candidates
+
+@tc00003 @tc00003-01
+Scenario: Swipe the Candidate
+  Given that I access the login page
+  When I swipe the candidate to another phase
+  And I begin the tests
+  Then I must see the questions
+
+@tc00004 @tc00004-01
+Scenario: Disable the Candidate
+  Given that I access the login page
+  When I check the candidate as disabled
+  Then I must have received the email
+
+@tc00003 @tc00004
+Scenario: Clear Tests
+  Given that I access the job edition page
+  When I edit the current job
+  And deactivate all the 'Kenoby' tests with status 'Fase: Inscrição Inicial'
+  Then I must delete the tests containing 'New Test' in title
