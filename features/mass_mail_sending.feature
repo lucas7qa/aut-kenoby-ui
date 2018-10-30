@@ -12,12 +12,10 @@ Scenario: Mass Sending of Test Reminder
 Scenario: Mass Sending of Email
   Given that I access the job edition page
   When I send an 'Email' with the text body 'Envio de e-mail em massa' to the sorted candidates
-  #And access a candidate mail
   Then I should reply the email with 'Resposta do e-mail em massa'
 
 @tc00014
 Scenario: Mass Sending of Email Based on Template
   Given that I access the job edition page
   When I send the template mail 'Modelo Teste'
-  And access a candidate mail
   Then I should reply the email with 'Resposta do e-mail em massa com modelo'

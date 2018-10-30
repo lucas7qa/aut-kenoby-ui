@@ -1,3 +1,4 @@
-After do  
-  Capybara.current_session.driver.quit  
+Before do
+  @page = page
+  Capybara.reset_sessions!
 end

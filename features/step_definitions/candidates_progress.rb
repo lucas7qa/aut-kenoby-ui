@@ -1,10 +1,8 @@
 Given("that I access the login page") do
-  steps %{
-    Given that I access the job page
-    When I send the register
-  }
   @page.(Login).load
   @page.(Login).login_page
+  sleep 10
+  @email = @page.(Login).find_mail
 end
 
 When("I swipe the candidate to another phase") do

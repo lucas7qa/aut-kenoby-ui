@@ -5,17 +5,17 @@ module Helpers
   end
 
   def wait_and_click(element, ind = nil)
-  	sleep 0.3
+    sleep 1
     send "wait_until_#{element}_visible"
-  	if ind == nil
-		send(element).click
-	else
-  		send(element)[ind].click
-  	end
+    if ind == nil
+    	send(element).click
+    else
+      send(element)[ind].click
+    end
   end
 
   def wait_and_set(element, content, ind = nil) 
-  	sleep 0.3
+  	sleep 1
     send "wait_until_#{element}_visible"
   	if ind == nil
   		send(element).set content
@@ -25,11 +25,11 @@ module Helpers
   end
 
   def wait_and_select(element, content, ind = nil) 
-  	sleep 0.3
+  	sleep 1
     send "wait_until_#{element}_visible"
   	if ind == nil
   		send(element).select content
-	else
+    else
   		send(element)[ind].select content
   	end
   end

@@ -7,6 +7,7 @@ class RegisterEmail < SitePrism::Page
     change_last_page
     wait_until_email_visible
     @email = email_value + "@mailnesia.com"
+    p "Email of this run: #{@email}"
     email.set @email
     wait_until_btn_continuar_visible
     btn_continuar.click

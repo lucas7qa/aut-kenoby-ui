@@ -20,7 +20,7 @@ Scenario: Disable the Candidate
   When I check the candidate as disabled
   Then I must have received the email
 
-@tc00003 @tc00004
+@tc0000-3 @tc00004
 Scenario: Clear Tests
   Given that I access the job edition page
   When I edit the current job

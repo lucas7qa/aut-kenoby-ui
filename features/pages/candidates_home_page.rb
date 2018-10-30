@@ -186,11 +186,15 @@ class CandidatesHome < SitePrism::Page
   end
 
   def screening_candidate(email)
+    sleep 1
     wait_and_set('filter', email)
+    sleep 1
     wait_and_click('screening_first_candidate')
+    sleep 1
     wait_and_click('progress_bar')
+    sleep 1
     wait_and_set('filter_progress_bar', email + "@mailnesia.com")
-
+    sleep 1
     loop do
       begin
         page.driver.browser.execute_script("var dm = document.createElement('script'); dm.src='https://andywer.github.io/drag-mock/drag-mock.min.js'; document.head.appendChild(dm) ; var dragSource = document.querySelector('#applicant-card'); var dropTarget = document.querySelector('#abordados'); window.dragMock.dragStart(dragSource).delay(100).dragOver(dropTarget).delay(100).drop(dropTarget);")
@@ -202,14 +206,25 @@ class CandidatesHome < SitePrism::Page
   end
 
   def disabled_candidate(email)
+    sleep 1
+    wait_and_click('candidates_filter')
+    sleep 1
     wait_and_set('filter', email)
+    sleep 1
     wait_and_click('screening_first_candidate')
+    sleep 1
     wait_and_click('progress_bar')
+    sleep 1
     wait_and_set('filter_progress_bar', email + "@mailnesia.com")
+    sleep 1
     change_last_page
+    sleep 1
     wait_and_click('options_candidate')
+    sleep 1
     wait_and_click('incompatible_candidate')
+    sleep 1
     reason_candidate_incompatible
+    sleep 1
     send_email
   end
 

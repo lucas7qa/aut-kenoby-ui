@@ -7,13 +7,6 @@ class CurrentJob < SitePrism::Page
   def enter_job(scenario)
     wait_load('job')
     wait_and_click('job')
-#    Capybara.default_max_wait_time = 0.1
-#    begin
-#      assert_text 'Sua evolução'
-#    rescue
-#      wait_and_click('job')
-#    end
-#    Capybara.default_max_wait_time = 10
     sleep 5
     if scenario != 'Rankdone' && scenario != 'Mindsight'
       wait_and_click('test')
@@ -27,4 +20,3 @@ class CurrentJob < SitePrism::Page
 
 
 end
-

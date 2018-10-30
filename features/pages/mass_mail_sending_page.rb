@@ -22,7 +22,7 @@ class MassMailSending < SitePrism::Page
     sleep 3
     wait_and_click('test_reminder_envelop')
     sleep 3
-    #recursive_status_check
+    recursive_status_check
   end
 
   def recursive_status_check
@@ -41,8 +41,8 @@ class MassMailSending < SitePrism::Page
     wait_and_set('mail_subject', text_body)
     within_frame(mail_body_frame) do wait_and_set('mail_body', text_body) end
     wait_and_click('send_mail_button')
-    #wait_load('pop_up_status')
-    #recursive_status_check
+    wait_load('pop_up_status')
+    recursive_status_check
   end
 
   def send_model_mail(template)
@@ -51,8 +51,8 @@ class MassMailSending < SitePrism::Page
     wait_and_click('mail_envelop')
     mail_model.select template
     wait_and_click('send_mail_button')
-    #wait_load('pop_up_status')
-    #recursive_status_check
+    wait_load('pop_up_status')
+    recursive_status_check
   end
 
   def reply_mail(text_body)
@@ -70,9 +70,6 @@ class MassMailSending < SitePrism::Page
         break
       end
     end
-
-    #uri_delete = "http://qamail.ala.se/api/empty_mailbox?session_key=Ec4XYGvXjTnMze19z3KfeNVa&address=inhlq2g@qamail.ala.se"
-    #delete_mailbox = HTTParty.delete(uri_delete, :headers => {"Content-Type" => "application/json", "accept" => "application/json"})
 
   end
 
