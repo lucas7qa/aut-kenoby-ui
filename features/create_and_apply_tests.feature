@@ -14,13 +14,6 @@ Scenario: Apply for a job with specific test
   When I send the register for 'New Test - Simple'
   Then I must be applying for the vacancy
 
-@delete_kenoby
-Scenario: Clear Tests
-  Given that I access the job edition page
-  When I edit the current job
-  And deactivate all the 'Kenoby' tests with status 'Fase: Inscrição Inicial'
-  Then I must delete the tests containing 'New Test' in title
-
 @tc00006
 Scenario: Create and Apply Tests - Limited Time
   Given that I access the job edition page
@@ -35,13 +28,6 @@ Scenario: Apply for a job with specific test
   When I send the register for 'New Test - Limited Time'
   Then I must be applying for the vacancy
 
-@delete_kenoby
-Scenario: Clear Tests
-  Given that I access the job edition page
-  When I edit the current job
-  And deactivate all the 'Kenoby' tests with status 'Fase: Inscrição Inicial'
-  Then I must delete the tests containing 'New Test' in title
-
 @tc00007
 Scenario: Create and Apply Tests - Expiration Date Set
   Given that I access the job edition page
@@ -55,13 +41,6 @@ Scenario: Apply for a job with specific test
   Given that I access the job page
   When I send the register for 'New Test - Expiration Date'
   Then I must be applying for the vacancy
-
-@delete_kenoby
-Scenario: Clear Tests
-  Given that I access the job edition page
-  When I edit the current job
-  And deactivate all the 'Kenoby' tests with status 'Fase: Inscrição Inicial'
-  Then I must delete the tests containing 'New Test' in title
 
 @tc00008
 Scenario: Create and Apply New Test - Right Answer
@@ -78,13 +57,6 @@ Scenario: Apply for a job with specific test
   Then I must be applying for the vacancy
   And I must see the text 'Candidato passou no teste' at candidate detail screen
 
-@delete_kenoby
-Scenario: Clear Tests
-  Given that I access the job edition page
-  When I edit the current job
-  And deactivate all the 'Kenoby' tests with status 'Fase: Inscrição Inicial'
-  Then I must delete the tests containing 'New Test' in title
-
 @tc00009
 Scenario: Create and Apply New Test - Wrong Answer
   Given that I access the job edition page
@@ -100,13 +72,6 @@ Scenario: Apply for a job with specific test
   Then I must be applying for the vacancy
   And I must see the text 'Candidato eliminado por erros' at candidate detail screen
 
-@delete_kenoby
-Scenario: Clear Tests
-  Given that I access the job edition page
-  When I edit the current job
-  And deactivate all the 'Kenoby' tests with status 'Fase: Inscrição Inicial'
-  Then I must delete the tests containing 'New Test' in title
-
 @tc00010
 Scenario: Create and Apply New Test - Rankdone
   Given that I access the job edition page
@@ -118,14 +83,7 @@ Scenario: Create and Apply New Test - Rankdone
 Scenario: Apply for a job with specific test
   Given that I access the job page
   When I send the register for 'Rankdone'
-  Then I should see a message about the 'RankDone' test in my email box
-
-@delete_rankdone
-Scenario: Clear Tests
-  Given that I access the job edition page
-  When I edit the current job
-  And deactivate all the 'Kenoby' tests with status 'Fase: Inscrição Inicial'
-  Then I must delete the tests containing 'New Test' in title
+  Then I should see a message about the 'Rankdone' test in my email box
 
 @tc00011
 Scenario: Create and Apply New Test - Mindsight
@@ -139,10 +97,3 @@ Scenario: Apply for a job with specific test
   Given that I access the job page
   When I send the register for 'Mindsight'
   Then I should see a message about 'Mindsight' tests in the current screen
-
-@delete_mindsight
-Scenario: Clear Tests
-  Given that I access the job edition page
-  When I edit the current job
-  And deactivate all the 'Kenoby' tests with status 'Fase: Inscrição Inicial'
-  Then I must delete the tests containing 'New Test' in title

@@ -43,7 +43,7 @@ end
 
 Then("I must see the text {string} at candidate detail screen") do |text|
   @page.(CandidatesHome).load
-  @page.(Login).login_page
+  #@page.(Login).login_page
   sleep 5
   @page.(CandidatesHome).wait_and_click('candidates_filter')
   sleep 1

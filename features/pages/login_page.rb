@@ -7,6 +7,7 @@ class Login < SitePrism::Page
   elements :full_name, '.name'
 
   def login_page
+    sleep 5
     wait_until_email_visible
     email.set LOGIN['login']['email']
     password.set LOGIN['login']['password']
