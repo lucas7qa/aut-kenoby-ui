@@ -1,4 +1,3 @@
-Before do
-  @page = page
+Before do  
   Capybara.reset_sessions!
 end

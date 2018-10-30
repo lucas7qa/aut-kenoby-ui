@@ -18,5 +18,4 @@ class CurrentJob < SitePrism::Page
     second_test.click
   end
 
-
 end

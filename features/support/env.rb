@@ -26,3 +26,7 @@ Capybara.default_max_wait_time = 10
 Capybara.page.driver.browser.manage.window.maximize
 
 page = lambda {|klass| klass.new}
+
+Before do
+  @page = page
+end
