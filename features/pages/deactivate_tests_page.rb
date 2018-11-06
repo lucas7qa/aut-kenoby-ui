@@ -11,57 +11,61 @@ class DeactivateTests < SitePrism::Page
   elements :company_test, '.category-header'
 
   def find_active_test(company_name, test_phase)
-    sleep 3
-    if company_name == 'Rankdone'
-        wait_and_click('company_test', 0)
+#    if company_name == 'Rankdone'
+#        wait_and_click('company_test', 0)
         wait_and_click('company_test', 2)
-    end
+ #   end
 
-    if company_name == 'Mindsight'
-        wait_and_click('company_test', 0)
+  #  if company_name == 'Mindsight'
+  #      wait_and_click('company_test', 0)
         wait_and_click('company_test', 1)
-    end
+    #end
+
+   # wait_and_click('company_test', 0)
+   # wait_and_click('company_test', 0)
 
     label_phase.each do |phase| 
       if phase.text == test_phase
-          sleep 1
-          wait_and_click('label_phase', 0)
-          sleep 1
-          wait_and_click('delete_test')
-          sleep 1
-          wait_and_click('confirm_delete')
-          sleep 3
+         sleep 1
+         wait_and_click('label_phase', 0)
+         sleep 1
+         wait_and_click('delete_test')
+         sleep 1
+         confirm_delete.click
+         sleep 5
       end
     end
 
     wait_and_click('close_test')
-    sleep 1
     wait_and_click('navbar')
-    sleep 1
     click_button("Salvar")
-    sleep 3
   end
 
   def delete_tests(test_name)
-    sleep 3
     if test_name == 'Rankdone'
-        wait_and_click('company_test', 0)
-        wait_and_click('company_test', 2)
+       wait_and_click('company_test', 0)
+       wait_and_click('company_test', 2)
     end
     
+    wait_and_click('company_test', 0)
+    wait_and_click('company_test', 0)
+
+    wait_load('label_test')
+
     label_test.each do |test_line|
       if test_line.text.include? test_name.upcase
-          sleep 1
-        test_line.click
-          sleep 1
-        cogwheel.hover
-          sleep 1
-        trashcan.click
-          sleep 1
-        confirm_delete.click
-          sleep 5
+         sleep 1
+         test_line.click
+         sleep 1
+         cogwheel.hover
+         sleep 1
+         wait_and_click('trashcan')
+         sleep 1
+         confirm_delete.click
+         sleep 5
       end
     end
+
     wait_and_click('close_test')
     wait_and_click('navbar')
     click_button("Salvar")

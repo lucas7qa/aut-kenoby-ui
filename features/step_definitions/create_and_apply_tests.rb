@@ -24,7 +24,7 @@ When("create a new test called {string}") do |test_name|
   end
 end
 
-When("set the expiration date of the test to {string}") do |date|
+Given("set the expiration date of the test to {string}") do |date|
   @page.(CandidatesHome).set_expiration_date(date)
 end
 
@@ -43,15 +43,21 @@ end
 
 Then("I must see the text {string} at candidate detail screen") do |text|
   @page.(CandidatesHome).load
-  #@page.(Login).login_page
-  sleep 5
+  @page.(Login).login_page
   @page.(CandidatesHome).wait_and_click('candidates_filter')
-  sleep 1
   @page.(CandidatesHome).wait_and_set('filter', @email)
-  sleep 1
   @page.(CandidatesHome).wait_and_click('test_star', 1)
   sleep 1
   @page.(CandidatesHome).wait_and_click('test_eye')
-  sleep 4
+  sleep 1
   assert_text text
+end
+
+Then("the test must be unavailable by the expired date") do
+  sleep 5
+  assert_text 'NEW TEST - EXPIRATION DATE'
+  zx = find(:xpath, "//*[@id='root']/div/div[2]/div[2]/div[2]/span/div/span/div[2]/div/div/div[5]/div[1]/span/span[2]/span")
+  zx.hover
+  zy = find(:xpath, "//*[@id='root']/div/div[2]/div[2]/div[2]/span/div/span/div[2]/div/div/div[5]/div[1]/div/div").text
+  p "Status of the the expired test: #{zy}"
 end

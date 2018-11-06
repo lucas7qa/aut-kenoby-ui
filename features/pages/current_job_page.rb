@@ -5,11 +5,11 @@ class CurrentJob < SitePrism::Page
   element :second_test, '#start-test', match: :first
 
   def enter_job(scenario)
-    wait_load('job')
     wait_and_click('job')
-    sleep 5
-    if scenario != 'Rankdone' && scenario != 'Mindsight'
-      wait_and_click('test')
+    if scenario != 'New Test - Expiration Date'
+      if scenario != 'Rankdone' && scenario != 'Mindsight'
+        wait_and_click('test')
+      end
     end
   end
 

@@ -17,30 +17,19 @@ class Mailinator < SitePrism::Page
 
   def show_email
     wait_and_click('first_email')
-    sleep 3
     wait_and_click('link_email_job')
-    sleep 5
-    refresh
-    change_last_page
   end
 
   def show_email_second_stage
-    sleep 4
     wait_and_click('first_email_second_stage', 0)
-    sleep 3
     click_link('Iniciar Testes')
-    sleep 5
-    refresh
-    change_last_page
   end
 
   def assert_on_email(company)
     assert_text company
-    sleep 5
   end
 
   def show_email_candidate_incompatible
-    sleep 4
     wait_and_click('first_email_second_stage', 0)
   end
 

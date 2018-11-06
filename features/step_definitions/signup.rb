@@ -25,6 +25,7 @@ When("I send the register for {string}") do |scenario|
   @page.(RegisterUser).register_first_time(@email,@first_name,@last_name)
   @page.(RegisterUser).register
   @page.(Mailinator).load
+  sleep 10
   @page.(Mailinator).open_mailbox(@email)
   @page.(Mailinator).show_email
   @page.(CurrentJob).enter_job(scenario)
@@ -34,17 +35,19 @@ When("I send the register for {string}") do |scenario|
 end
 
 Then("I must be applying for the vacancy") do
-  assert_text 'Teste finalizado, boa sorte em seu processo de candidatura!'
+  @page.(Test).assert_message
   puts 'Teste finalizado, boa sorte em seu processo de candidatura!'
 end
 
 Then("I should see a message about the {string} test in my email box") do |company|
+  sleep 10
   @page.(Mailinator).load
   @page.(Mailinator).open_mailbox(@email)
   @page.(Mailinator).assert_on_email(company)
 end
 
 Then("I should see a message about {string} tests in the current screen") do |company|
+  sleep 10
   assert_text company.upcase
   sleep 5
 end

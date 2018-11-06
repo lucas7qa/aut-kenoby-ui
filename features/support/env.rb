@@ -23,10 +23,11 @@ end
 
 Capybara.current_driver = :selenium
 Capybara.default_max_wait_time = 10
-Capybara.page.driver.browser.manage.window.maximize
+#Capybara.page.driver.browser.manage.window.maximize
 
 page = lambda {|klass| klass.new}
 
 Before do
+  Capybara.reset_sessions!
   @page = page
 end

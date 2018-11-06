@@ -1,7 +1,7 @@
 @create_and_apply_tests
 Feature: Create And Apply Tests
 
-@tc00005
+@tc00005 @create_test
 Scenario: Create and Apply New Test - Simple
   Given that I access the job edition page
   When I edit the current job
@@ -14,7 +14,7 @@ Scenario: Apply for a job with specific test
   When I send the register for 'New Test - Simple'
   Then I must be applying for the vacancy
 
-@tc00006
+@tc00006 @create_test
 Scenario: Create and Apply Tests - Limited Time
   Given that I access the job edition page
   When I edit the current job
@@ -28,21 +28,21 @@ Scenario: Apply for a job with specific test
   When I send the register for 'New Test - Limited Time'
   Then I must be applying for the vacancy
 
-@tc00007
+@tc00007 @create_test
 Scenario: Create and Apply Tests - Expiration Date Set
   Given that I access the job edition page
   When I edit the current job
   And create a new test called 'New Test - Expiration Date'
-  And set the expiration date of the test to '01/09/2018'
   Then I must apply 'New Test - Expiration Date' for subscribed candidates
+  And set the expiration date of the test to '01/09/2018'
 
 @tc00007 @tc00007-01
 Scenario: Apply for a job with specific test
   Given that I access the job page
   When I send the register for 'New Test - Expiration Date'
-  Then I must be applying for the vacancy
+  Then the test must be unavailable by the expired date
 
-@tc00008
+@tc00008 @create_test
 Scenario: Create and Apply New Test - Right Answer
   Given that I access the job edition page
   When I edit the current job
@@ -57,7 +57,7 @@ Scenario: Apply for a job with specific test
   Then I must be applying for the vacancy
   And I must see the text 'Candidato passou no teste' at candidate detail screen
 
-@tc00009
+@tc00009 @create_test
 Scenario: Create and Apply New Test - Wrong Answer
   Given that I access the job edition page
   When I edit the current job
@@ -72,7 +72,7 @@ Scenario: Apply for a job with specific test
   Then I must be applying for the vacancy
   And I must see the text 'Candidato eliminado por erros' at candidate detail screen
 
-@tc00010
+@tc00010 @create_test
 Scenario: Create and Apply New Test - Rankdone
   Given that I access the job edition page
   When I edit the current job
@@ -85,7 +85,7 @@ Scenario: Apply for a job with specific test
   When I send the register for 'Rankdone'
   Then I should see a message about the 'Rankdone' test in my email box
 
-@tc00011
+@tc00011 @create_test
 Scenario: Create and Apply New Test - Mindsight
   Given that I access the job edition page
   When I edit the current job

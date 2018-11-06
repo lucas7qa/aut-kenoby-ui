@@ -19,12 +19,7 @@ class RegisterUser < SitePrism::Page
   element :agree, :xpath, "//*[@id='root']/div/div[3]/div[3]/div[4]/label/span[1]"
   element :sucess_button , '.SuccessButton'
   elements :dropdown_item, 'li' 
-
-  def dropdown_item_select(content)
-    sleep 0.1
-    page.all('li', :text => content)[0].click
-  end
-
+  elements :login_fields, ".jss34.jss9"
 
   def register
     wait_and_set('referral', Faker::Movie.quote)
@@ -62,14 +57,13 @@ class RegisterUser < SitePrism::Page
   end
 
   def register_first_time(mail,first_name,last_name)
-    wait_until_password_visible
-    x = page.all(".jss34.jss9")
-    x[0].set (mail + '@mailnesia.com')
-    x[1].set first_name
-    x[2].set last_name
-    password.set "kenoby123"
-    agree.click
-    sucess_button.click
+    sleep 5
+    wait_and_set('login_fields', mail + '@mailnesia.com', 0)
+    wait_and_set('login_fields', first_name, 1)
+    wait_and_set('login_fields', last_name, 2)
+    wait_and_set('password', "kenoby123")
+    wait_and_click('agree')
+    wait_and_click('sucess_button')
   end
 
 end

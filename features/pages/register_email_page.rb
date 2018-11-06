@@ -5,11 +5,10 @@ class RegisterEmail < SitePrism::Page
 
   def register_email(email_value)
     change_last_page
-    wait_until_email_visible
+    wait_load('email')
     @email = email_value + "@mailnesia.com"
     p "Email of this run: #{@email}"
-    email.set @email
-    wait_until_btn_continuar_visible
-    btn_continuar.click
+    wait_and_set('email', @email)
+    wait_and_click('btn_continuar')
   end
 end

@@ -14,28 +14,25 @@ class MassMailSending < SitePrism::Page
   element  :mail_body_frame, '#ui-tinymce-1_ifr'
   element  :mail_body, '#tinymce'
   element  :send_mail_button, '.btn.btn-success'
-  element  :rrr, '.btn.btn-success'
+  element  :checkbox_send_to_all, 'div > p:nth-child(3) > label > input'
 
   def send_test_reminder
-    sleep 10
+    sleep 5
     wait_and_click('sorted_candidates_checkbox')
-    sleep 3
     wait_and_click('test_reminder_envelop')
-    sleep 3
     recursive_status_check
   end
 
   def recursive_status_check
+    sleep 5
     if pop_up_status.text == 'Enviando'
       recursive_status_check
     else
-      sleep 3
       wait_and_click('confirm_button')
     end 
   end
 
   def send_mail(text_body)
-    sleep 8
     wait_and_click('sorted_candidates_checkbox')
     wait_and_click('mail_envelop')
     wait_and_set('mail_subject', text_body)
@@ -46,10 +43,10 @@ class MassMailSending < SitePrism::Page
   end
 
   def send_model_mail(template)
-    sleep 8
     wait_and_click('sorted_candidates_checkbox')
     wait_and_click('mail_envelop')
-    mail_model.select template
+    wait_and_select('mail_model', template)
+    wait_and_click('checkbox_send_to_all')
     wait_and_click('send_mail_button')
     wait_load('pop_up_status')
     recursive_status_check

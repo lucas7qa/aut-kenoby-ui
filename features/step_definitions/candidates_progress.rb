@@ -1,7 +1,7 @@
 Given("that I access the login page") do
   @page.(Login).load
   @page.(Login).login_page
-  sleep 10
+  #sleep 10
   @email = @page.(Login).find_mail
 end
 
